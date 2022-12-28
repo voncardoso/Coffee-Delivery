@@ -1,38 +1,31 @@
 import styled from "styled-components";
-export const ContainerHome = styled.section`
-    max-width: 72.5rem;
-    width: 100%;
-    padding: 0rem 1.125rem;
-    margin: 0 auto;
-    
-`;
-
-
+import background from "../../assets/Background.png"
+import {rgba} from "polished"
 //section Infomraçoes
 
 export const HomeInfo = styled.section`
+    width: 100%;
     margin: 0 auto;
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 5.875rem;
-    margin-bottom: 5.875rem;
-    gap: 56px;
-    z-index: 1000;
-
-    .fundo{
-        z-index: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 100px;
-        border: 0;
-        left: 0;
+    background: ${({theme}) => `url(${background}) no-repeat center,
+    linear-gradient(
+        45deg,
+        ${theme["white"]} 0%,
+        ${rgba(theme["background"], 0.8)} 100%,
+        ${theme["background"]} 100%
+    )`};
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, white 20%);
+    background-size: cover;
+    > div{
+        max-width: 72.5rem;
         width: 100%;
-        max-height: 34rem;
-        height: 100%;
+        height: 34rem;
+        padding: 0rem 1.125rem;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 56px;
+        z-index: 1000;
     }
 `;
 
@@ -111,3 +104,13 @@ export const ImgPrincipalHome = styled.img`
     z-index: 1000;
 `;
 
+
+// section nosso cafe
+
+export const Ourcafe = styled.section`
+    max-width: 72.5rem;
+    width: 100%;
+    padding: 0rem 1.125rem;
+    margin: 0 auto;
+    margin-bottom : 157px;
+`

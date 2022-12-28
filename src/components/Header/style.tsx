@@ -8,7 +8,7 @@ export const ContainerHeader = styled.header`
     max-width: 72.5rem;
     margin: 0 auto;
     padding: 2rem 1.125rem;
-    
+
 
     nav{
         display: flex;
