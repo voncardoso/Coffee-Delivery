@@ -1,10 +1,12 @@
-import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react"
+import { Coffee, Minus, Package, Plus, ShoppingCart, Timer } from "phosphor-react"
 import ImgCopoCafe from "../../assets/ImgCopoCafe.png"
 import ImgCoffe from "../../assets/Coffee.png"
-import { ContainerHome, DetailedInformation, DetailedInformationLi, HomeInfo, ImgPrincipalHome, Ourcafe } from "./style"
+import { ContainerHome, DetailedInformation, DetailedInformationLi, HomeInfo, ImgPrincipalHome, MethodOfPreparationCoffe, MoneyCoffe, Ourcafe, TypeCoffe } from "./style"
 import { Link } from "react-router-dom"
+import { useState } from "react"
 
 export function Home(){
+
     return(
         <ContainerHome>
                 <HomeInfo>
@@ -51,20 +53,117 @@ export function Home(){
                     <ul>
                         <li>
                             <img src={ImgCoffe} alt="" />
-                            <div>
+                            <MethodOfPreparationCoffe>
                                 <p>Tradicional</p>
                                 <p>Tradicional</p>
-                            </div>
-                            <div>
-                                <span>Expresso Tradicional</span>
+                            </MethodOfPreparationCoffe>
+                            <TypeCoffe>
+                                <strong>Expresso Tradicional</strong>
                                 <p>O tradicional café feito com água quente e grãos moídos</p>
-                            </div>
-                            <div>
+                            </TypeCoffe>
+                            <MoneyCoffe>
                                 <p>R$ <span>9,90</span></p>
-                                <input type="number" />
-                                <Link to="/"/>
-                            </div>
+                                <div>
+                                    <div>
+                                        <button>
+                                            <Minus weight="bold" size={14}/>
+                                        </button>
+                                        <p>0</p>
+                                        <button>
+                                            <Plus weight="bold" size={14}/>
+                                        </button>
+                                    </div>
+                                    <Link to="/">
+                                        <ShoppingCart weight="fill" size={22}/>
+                                    </Link>
+                                </div>
+                            </MoneyCoffe>
                         </li>
+                        <li>
+                            <img src={ImgCoffe} alt="" />
+                            <MethodOfPreparationCoffe>
+                                <p>Tradicional</p>
+                                <p>Tradicional</p>
+                            </MethodOfPreparationCoffe>
+                            <TypeCoffe>
+                                <strong>Expresso Tradicional</strong>
+                                <p>O tradicional café feito com água quente e grãos moídos</p>
+                            </TypeCoffe>
+                            <MoneyCoffe>
+                                <p>R$ <span>9,90</span></p>
+                                <div>
+                                    <div>
+                                        <button>
+                                            <Minus weight="bold" size={14}/>
+                                        </button>
+                                        <p>0</p>
+                                        <button>
+                                            <Plus weight="bold" size={14}/>
+                                        </button>
+                                    </div>
+                                    <Link to="/">
+                                        <ShoppingCart weight="fill" size={22}/>
+                                    </Link>
+                                </div>
+                            </MoneyCoffe>
+                        </li>
+                        <li>
+                            <img src={ImgCoffe} alt="" />
+                            <MethodOfPreparationCoffe>
+                                <p>Tradicional</p>
+                                <p>Tradicional</p>
+                            </MethodOfPreparationCoffe>
+                            <TypeCoffe>
+                                <strong>Expresso Tradicional</strong>
+                                <p>O tradicional café feito com água quente e grãos moídos</p>
+                            </TypeCoffe>
+                            <MoneyCoffe>
+                                <p>R$ <span>9,90</span></p>
+                                <div>
+                                    <div>
+                                        <button>
+                                            <Minus weight="bold" size={14}/>
+                                        </button>
+                                        <p>0</p>
+                                        <button>
+                                            <Plus weight="bold" size={14}/>
+                                        </button>
+                                    </div>
+                                    <Link to="/">
+                                        <ShoppingCart weight="fill" size={22}/>
+                                    </Link>
+                                </div>
+                            </MoneyCoffe>
+                        </li>
+                        <li>
+                            <img src={ImgCoffe} alt="" />
+                            <MethodOfPreparationCoffe>
+                                <p>Tradicional</p>
+                                <p>Tradicional</p>
+                            </MethodOfPreparationCoffe>
+                            <TypeCoffe>
+                                <strong>Expresso Tradicional</strong>
+                                <p>O tradicional café feito com água quente e grãos moídos</p>
+                            </TypeCoffe>
+                            <MoneyCoffe>
+                                <p>R$ <span>9,90</span></p>
+                                <div>
+                                    <div>
+                                        <button>
+                                            <Minus weight="bold" size={14}/>
+                                        </button>
+                                        <p>0</p>
+                                        <button>
+                                            <Plus weight="bold" size={14}/>
+                                        </button>
+                                    </div>
+                                    <Link to="/">
+                                        <ShoppingCart weight="fill" size={22}/>
+                                    </Link>
+                                </div>
+                            </MoneyCoffe>
+                        </li>
+                       
                     </ul>
                 </Ourcafe>
         </ContainerHome>

@@ -127,4 +127,131 @@ export const Ourcafe = styled.section`
         margin-bottom: 3.375rem;
         color: ${(props) => props.theme["base-subtitle"]};
     }
+
+    ul{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 2rem;
+
+        li{
+            background: ${(props) => props.theme["base-card"]};
+            padding: 0px 24px 20px 24px;
+            border-top-right-radius: 36px;
+            border-bottom-left-radius: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+
+            img{
+                position: relative;
+                top: -20px;
+                max-width: 120px;
+                width: 100%;
+                margin: 0 auto;
+            }
+        }
+    }
 `
+
+export const MethodOfPreparationCoffe = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 20px;
+    p{
+        font-size: 0.625rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        background:  ${(props) => props.theme["yellow-light"]};
+        color:  ${(props) => props.theme["yellow-dark"]};
+        line-height: 130%;
+        padding: 4px 8px;
+        border-radius: 10px;
+    }
+`;
+
+export const TypeCoffe = styled.div`
+    display: flex;
+    flex-direction: column;
+    strong{
+        font-family: 'Baloo 2', cursive;
+        font-weight: 700;
+        color:  ${(props) => props.theme["base-subtitle"]};
+        font-size: 1.25rem;
+        line-height: 130%;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    p{
+        color:  ${(props) => props.theme["base-label"]};
+        font-size: 0.875rem;
+        text-align: center;
+        line-height: 130%;
+        margin-bottom: 2rem;
+    }
+`;
+
+export const MoneyCoffe = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    >p{
+        font-family: 'Baloo 2', cursive;
+        color:  ${(props) => props.theme["base-text"]};
+        line-height: 130%;
+        span{
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+    }
+
+    >div{
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        >div{
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        background: ${(props) => props.theme["base-button"]};
+        padding: 8.5px;
+        border-radius: 6px;
+
+        P{
+            font-size: 1rem;
+            line-height: 130%;
+            width: 20px;
+            text-align: center;
+            color:${(props) => props.theme["base-title"]} ;
+        }
+
+        button{
+            display: flex;
+            align-items: center;
+            border: none;
+            background: none;
+            cursor: pointer;
+            svg{
+                color:${(props) => props.theme["purple"]} ;
+            }
+        }
+
+    }
+    a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        background: ${(props) => props.theme["purple-dark"]};
+        border-radius: 6px;
+
+        svg{
+            color:  ${(props) => props.theme["base-card"]};
+        }
+    }
+    }
+`;
