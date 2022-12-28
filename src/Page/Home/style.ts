@@ -18,7 +18,7 @@ export const HomeInfo = styled.section`
         ${rgba(theme["background"], 0.8)} 100%,
         ${theme["background"]} 100%
     )`};
-    -webkit-mask-image: linear-gradient(to top, transparent 0%, white 20%);
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, white 10%);
     background-size: cover;
     > div{
         max-width: 72.5rem;
@@ -118,4 +118,13 @@ export const Ourcafe = styled.section`
     padding: 0rem 1.125rem;
     margin: 0 auto;
     margin-bottom : 157px;
+
+    h2{
+        font-family: 'Baloo 2', cursive;
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 130%;
+        margin-bottom: 3.375rem;
+        color: ${(props) => props.theme["base-subtitle"]};
+    }
 `
