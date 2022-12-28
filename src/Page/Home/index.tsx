@@ -1,12 +1,12 @@
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react"
 import ImgCopoCafe from "../../assets/ImgCopoCafe.png"
 import backgound from "../../assets/Background.png"
-import { DetailedInformation, DetailedInformationLi, HomeInfo, ImgPrincipalHome, Ourcafe } from "./style"
+import { ContainerHome, DetailedInformation, DetailedInformationLi, HomeInfo, ImgPrincipalHome, Ourcafe } from "./style"
 import { Link } from "react-router-dom"
 
 export function Home(){
     return(
-        <>
+        <ContainerHome>
                 <HomeInfo>
                     <div>
                         <DetailedInformation >
@@ -67,6 +67,6 @@ export function Home(){
                         </li>
                     </ul>
                 </Ourcafe>
-        </>
+        </ContainerHome>
     )
 }

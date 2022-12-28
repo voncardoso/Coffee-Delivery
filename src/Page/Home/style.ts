@@ -3,6 +3,11 @@ import background from "../../assets/Background.png"
 import {rgba} from "polished"
 //section Infomraçoes
 
+export const ContainerHome = styled.section`
+    position: relative;
+    top: 104px;
+`;
+
 export const HomeInfo = styled.section`
     width: 100%;
     margin: 0 auto;
