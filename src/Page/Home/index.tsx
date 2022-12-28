@@ -5,8 +5,10 @@ import { ContainerHome, DetailedInformation, DetailedInformationLi, HomeInfo, Im
 import { Link } from "react-router-dom"
 import { useState } from "react"
 
-export function Home(){
+import {Data} from "../../data/index"
 
+export function Home(){
+    
     return(
         <ContainerHome>
                 <HomeInfo>
@@ -51,119 +53,41 @@ export function Home(){
                 <Ourcafe>
                     <h2>Nossos cafés</h2>
                     <ul>
-                        <li>
-                            <img src={ImgCoffe} alt="" />
-                            <MethodOfPreparationCoffe>
-                                <p>Tradicional</p>
-                                <p>Tradicional</p>
-                            </MethodOfPreparationCoffe>
-                            <TypeCoffe>
-                                <strong>Expresso Tradicional</strong>
-                                <p>O tradicional café feito com água quente e grãos moídos</p>
-                            </TypeCoffe>
-                            <MoneyCoffe>
-                                <p>R$ <span>9,90</span></p>
-                                <div>
-                                    <div>
-                                        <button>
-                                            <Minus weight="bold" size={14}/>
-                                        </button>
-                                        <p>0</p>
-                                        <button>
-                                            <Plus weight="bold" size={14}/>
-                                        </button>
-                                    </div>
-                                    <Link to="/">
-                                        <ShoppingCart weight="fill" size={22}/>
-                                    </Link>
-                                </div>
-                            </MoneyCoffe>
-                        </li>
-                        <li>
-                            <img src={ImgCoffe} alt="" />
-                            <MethodOfPreparationCoffe>
-                                <p>Tradicional</p>
-                                <p>Tradicional</p>
-                            </MethodOfPreparationCoffe>
-                            <TypeCoffe>
-                                <strong>Expresso Tradicional</strong>
-                                <p>O tradicional café feito com água quente e grãos moídos</p>
-                            </TypeCoffe>
-                            <MoneyCoffe>
-                                <p>R$ <span>9,90</span></p>
-                                <div>
-                                    <div>
-                                        <button>
-                                            <Minus weight="bold" size={14}/>
-                                        </button>
-                                        <p>0</p>
-                                        <button>
-                                            <Plus weight="bold" size={14}/>
-                                        </button>
-                                    </div>
-                                    <Link to="/">
-                                        <ShoppingCart weight="fill" size={22}/>
-                                    </Link>
-                                </div>
-                            </MoneyCoffe>
-                        </li>
-                        <li>
-                            <img src={ImgCoffe} alt="" />
-                            <MethodOfPreparationCoffe>
-                                <p>Tradicional</p>
-                                <p>Tradicional</p>
-                            </MethodOfPreparationCoffe>
-                            <TypeCoffe>
-                                <strong>Expresso Tradicional</strong>
-                                <p>O tradicional café feito com água quente e grãos moídos</p>
-                            </TypeCoffe>
-                            <MoneyCoffe>
-                                <p>R$ <span>9,90</span></p>
-                                <div>
-                                    <div>
-                                        <button>
-                                            <Minus weight="bold" size={14}/>
-                                        </button>
-                                        <p>0</p>
-                                        <button>
-                                            <Plus weight="bold" size={14}/>
-                                        </button>
-                                    </div>
-                                    <Link to="/">
-                                        <ShoppingCart weight="fill" size={22}/>
-                                    </Link>
-                                </div>
-                            </MoneyCoffe>
-                        </li>
-                        <li>
-                            <img src={ImgCoffe} alt="" />
-                            <MethodOfPreparationCoffe>
-                                <p>Tradicional</p>
-                                <p>Tradicional</p>
-                            </MethodOfPreparationCoffe>
-                            <TypeCoffe>
-                                <strong>Expresso Tradicional</strong>
-                                <p>O tradicional café feito com água quente e grãos moídos</p>
-                            </TypeCoffe>
-                            <MoneyCoffe>
-                                <p>R$ <span>9,90</span></p>
-                                <div>
-                                    <div>
-                                        <button>
-                                            <Minus weight="bold" size={14}/>
-                                        </button>
-                                        <p>0</p>
-                                        <button>
-                                            <Plus weight="bold" size={14}/>
-                                        </button>
-                                    </div>
-                                    <Link to="/">
-                                        <ShoppingCart weight="fill" size={22}/>
-                                    </Link>
-                                </div>
-                            </MoneyCoffe>
-                        </li>
-                       
+                        {Data.map((item) =>{
+                            return(
+                                <li key={item.id}>
+                                    <img src={item.img} alt="" />
+                                    <MethodOfPreparationCoffe>
+                                        {item.modo.map((modo) =>{
+                                            return(
+                                                <p key={modo.id}>{modo.type}</p>
+                                            )
+                                        })}
+                                    </MethodOfPreparationCoffe>
+                                    <TypeCoffe>
+                                        <strong>{item.type}</strong>
+                                        <p>{item.description}</p>
+                                    </TypeCoffe>
+                                    <MoneyCoffe>
+                                        <p>R$ <span>{item.money}</span></p>
+                                        <div>
+                                            <div>
+                                                <button>
+                                                    <Minus weight="bold" size={14}/>
+                                                </button>
+                                                <p>0</p>
+                                                <button>
+                                                    <Plus weight="bold" size={14}/>
+                                                </button>
+                                            </div>
+                                            <Link to="/">
+                                                <ShoppingCart weight="fill" size={22}/>
+                                            </Link>
+                                        </div>
+                                    </MoneyCoffe>
+                                </li>  
+                            )
+                        })}                     
                     </ul>
                 </Ourcafe>
         </ContainerHome>
