@@ -11,7 +11,7 @@ import { CartContext } from "../../contexts"
 
 export function Home(){
     const {AddCoffe, RemoveCoffe, carCoffe} = useContext(CartContext)
-    console.log(carCoffe)
+    
     return(
         <ContainerHome>
                 <HomeInfo>

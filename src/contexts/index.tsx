@@ -14,12 +14,14 @@ interface propsCoffe{
     money: number,
     amount: number,
     img: string,
+    
 }
 
 interface CarContextTypes{
     carCoffe: propsCoffe[],
     AddCoffe: (id: number,  coffeItem: propsCoffe) => void
     RemoveCoffe: (id: number,  coffeItem: propsCoffe) => void
+    SomerItemsCar: number
 }
 
 export const CartContext = createContext({} as CarContextTypes)
@@ -36,6 +38,9 @@ export function CartContextProvaider({children}: CartContextProvaiderProps){
     useEffect(() =>{
         localStorage.setItem("teste", JSON.stringify(carCoffe))
     }, [carCoffe])
+
+    const SomerItemsCar = carCoffe.reduce((prevItem: any, item:propsCoffe) => prevItem + Number(item.amount), 0)
+
 
     function AddCoffe(id: number, coffeItem: propsCoffe){
         const copyCoffee = [...carCoffe];
@@ -95,7 +100,7 @@ export function CartContextProvaider({children}: CartContextProvaiderProps){
 
 
     return(
-        <CartContext.Provider value={{AddCoffe, RemoveCoffe, carCoffe}}>
+        <CartContext.Provider value={{AddCoffe, RemoveCoffe, carCoffe, SomerItemsCar}}>
             {children}
         </CartContext.Provider>
     )

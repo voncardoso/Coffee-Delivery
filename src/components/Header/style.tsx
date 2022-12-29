@@ -44,3 +44,38 @@ export const ContainerHeader = styled.header`
         }
     }
 `;
+
+export const IconCarItems = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        a{
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            background: ${(props) => props.theme['yellow-light']};
+            border-radius: 6px;
+
+            svg{
+                color: ${(props) => props.theme['yellow-dark']};
+            }
+        }
+
+    span{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        top: -10px;
+        right: 8px;
+        align-self: flex-start;
+        font-size: 0.75rem;
+        padding: 2px 4px;
+        background: red;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        color: ${(props) => props.theme['background']};
+        background: ${(props) => props.theme['yellow-dark']}
+    }
+`;
