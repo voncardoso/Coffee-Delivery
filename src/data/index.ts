@@ -26,6 +26,7 @@ export const Data = [
         type: "Expresso Tradicional",
         description: "O tradicional café feito com água quente e grãos moídos",
         money: 9.90,
+        amount: 0,
         img: expresoTradicional
     },
     {
@@ -39,6 +40,7 @@ export const Data = [
         type: "Expresso Americano",
         description: "Expresso diluído, menos intenso que o tradicional",
         money: 9.90,
+        amount: 0,
         img: expresoAmericano
     },
     {
@@ -52,6 +54,7 @@ export const Data = [
         type: "Expresso Cremoso",
         description: "Café expresso tradicional com espuma cremosa",
         money: 9.90,
+        amount: 0,
         img: expresoCremoso
     },
     {
@@ -69,6 +72,7 @@ export const Data = [
         type: "Expresso Gelado",
         description: "Bebida preparada com café expresso e cubos de gelo",
         money: 9.90,
+        amount: 0,
         img: expresoGelado
     },
     {
@@ -86,6 +90,7 @@ export const Data = [
         type: "Café com Leite",
         description: "Meio a meio de expresso tradicional com leite vaporizado",
         money: 9.90,
+        amount: 0,
         img: coffeLeite
     },
     {
@@ -103,6 +108,7 @@ export const Data = [
         type: "Latte",
         description: "Uma dose de café expresso com o dobro de leite e espuma cremosa",
         money: 9.90,
+        amount: 0,
         img: coffeLatte
     },
     {
@@ -120,6 +126,7 @@ export const Data = [
         type: "Capuccino",
         description: "Bebida com canela feita de doses iguais de café, leite e espuma",
         money: 9.90,
+        amount: 0,
         img: coffeCapuccino
     },
     {
@@ -137,6 +144,7 @@ export const Data = [
         type: "Macchiato",
         description: "Café expresso misturado com um pouco de leite quente e espuma",
         money: 9.90,
+        amount: 0,
         img: coffeMacchiato
     },
     {
@@ -154,6 +162,7 @@ export const Data = [
         type: "Mocaccino",
         description: "Café expresso com calda de chocolate, pouco leite e espuma",
         money: 9.90,
+        amount: 0,
         img: coffeMocaccino
     },
     {
@@ -171,6 +180,7 @@ export const Data = [
         type: "Chocolate Quente",
         description: "Bebida feita com chocolate dissolvido no leite quente e café",
         money: 9.90,
+        amount: 0,
         img: coffeChocolateQuente
     },
     {
@@ -192,6 +202,7 @@ export const Data = [
         type: "Cubano",
         description: "Drink gelado de café expresso com rum, creme de leite e hortelã",
         money: 9.90,
+        amount: 0,
         img: coffeCubano
     },
     {
@@ -205,6 +216,7 @@ export const Data = [
         type: "Havaiano",
         description: "Bebida adocicada preparada com café e leite de coco",
         money: 9.90,
+        amount: 0,
         img: coffeHavaiano
     },
     {
@@ -218,6 +230,7 @@ export const Data = [
         type: "Árabe",
         description: "Bebida preparada com grãos de café árabe e especiarias",
         money: 9.90,
+        amount: 0,
         img: coffeArabe
     },
     {
@@ -235,6 +248,7 @@ export const Data = [
         type: "Irlandês",
         description: "Bebida a base de café, uísque irlandês, açúcar e chantill",
         money: 9.90,
+        amount: 0,
         img: coffeArabe
     }
 

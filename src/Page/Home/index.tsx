@@ -7,8 +7,77 @@ import { useState } from "react"
 
 import {Data} from "../../data/index"
 
+interface propsCoffe{
+    id: number,
+    modo: any,
+    type: string,
+    description: string,
+    money: number,
+    amount: number,
+    img: string,
+}
+
 export function Home(){
-    
+    const [coffe, steCoffe] = useState<propsCoffe[]>([])
+
+    function AddCoffe(id: number, coffeItem: propsCoffe){
+        const copyCoffee = [...coffe];
+
+        const item = Data.find((coffe) => coffe.id === id);
+
+        const item2 = copyCoffee.find((teste) => teste.id === id)
+        if(item){
+            item.amount++
+        }
+
+        if(!item2){
+            copyCoffee.push({
+                id: coffeItem.id,
+                amount: coffeItem.amount,
+                description: coffeItem.description,
+                img: coffeItem.img,
+                modo: coffeItem.modo,
+                money: coffeItem.money,
+                type: coffeItem.type
+               })
+               
+        }else{
+            item2.amount++
+        }
+        steCoffe(copyCoffee)
+        
+    }
+
+    function RemoveCoffe(id: number, coffeItem: propsCoffe){
+        const copyCoffee = [...coffe];
+
+        const item = Data.find((coffe) => coffe.id === id);
+
+        const item2 = copyCoffee.find((teste) => teste.id === id)
+        if(item){
+            item.amount--
+        }
+
+        if(!item2){
+            copyCoffee.push({
+                id: coffeItem.id,
+                amount: coffeItem.amount,
+                description: coffeItem.description,
+                img: coffeItem.img,
+                modo: coffeItem.modo,
+                money: coffeItem.money,
+                type: coffeItem.type
+               })
+               
+        }else{
+            item2.amount--
+        }
+        steCoffe(copyCoffee)
+        
+    }
+
+    console.log(coffe)
+
     return(
         <ContainerHome>
                 <HomeInfo>
@@ -72,11 +141,17 @@ export function Home(){
                                         <p>R$ <span>{item.money}</span></p>
                                         <div>
                                             <div>
-                                                <button>
+                                                <button onClick={(event) =>{
+                                                    event.preventDefault()
+                                                    RemoveCoffe(item.id, item)
+                                                }}>
                                                     <Minus weight="bold" size={14}/>
                                                 </button>
-                                                <p>0</p>
-                                                <button>
+                                                <p>{item.amount}</p>
+                                                <button onClick={(event) =>{
+                                                    event.preventDefault()
+                                                    AddCoffe(item.id, item)
+                                                }}>
                                                     <Plus weight="bold" size={14}/>
                                                 </button>
                                             </div>
