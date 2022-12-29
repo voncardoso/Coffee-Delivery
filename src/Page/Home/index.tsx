@@ -3,81 +3,15 @@ import ImgCopoCafe from "../../assets/ImgCopoCafe.png"
 import ImgCoffe from "../../assets/Coffee.png"
 import { ContainerHome, DetailedInformation, DetailedInformationLi, HomeInfo, ImgPrincipalHome, MethodOfPreparationCoffe, MoneyCoffe, Ourcafe, TypeCoffe } from "./style"
 import { Link } from "react-router-dom"
-import { useState } from "react"
-
 import {Data} from "../../data/index"
+import { useContext, useEffect, useState } from "react"
+import { CartContext } from "../../contexts"
 
-interface propsCoffe{
-    id: number,
-    modo: any,
-    type: string,
-    description: string,
-    money: number,
-    amount: number,
-    img: string,
-}
+
 
 export function Home(){
-    const [coffe, steCoffe] = useState<propsCoffe[]>([])
-
-    function AddCoffe(id: number, coffeItem: propsCoffe){
-        const copyCoffee = [...coffe];
-
-        const item = Data.find((coffe) => coffe.id === id);
-
-        const item2 = copyCoffee.find((teste) => teste.id === id)
-        if(item){
-            item.amount++
-        }
-
-        if(!item2){
-            copyCoffee.push({
-                id: coffeItem.id,
-                amount: coffeItem.amount,
-                description: coffeItem.description,
-                img: coffeItem.img,
-                modo: coffeItem.modo,
-                money: coffeItem.money,
-                type: coffeItem.type
-               })
-               
-        }else{
-            item2.amount++
-        }
-        steCoffe(copyCoffee)
-        
-    }
-
-    function RemoveCoffe(id: number, coffeItem: propsCoffe){
-        const copyCoffee = [...coffe];
-
-        const item = Data.find((coffe) => coffe.id === id);
-
-        const item2 = copyCoffee.find((teste) => teste.id === id)
-        if(item){
-            item.amount--
-        }
-
-        if(!item2){
-            copyCoffee.push({
-                id: coffeItem.id,
-                amount: coffeItem.amount,
-                description: coffeItem.description,
-                img: coffeItem.img,
-                modo: coffeItem.modo,
-                money: coffeItem.money,
-                type: coffeItem.type
-               })
-               
-        }else{
-            item2.amount--
-        }
-        steCoffe(copyCoffee)
-        
-    }
-
-    console.log(coffe)
-
+    const {AddCoffe, RemoveCoffe, carCoffe} = useContext(CartContext)
+    console.log(carCoffe)
     return(
         <ContainerHome>
                 <HomeInfo>
@@ -141,15 +75,13 @@ export function Home(){
                                         <p>R$ <span>{item.money}</span></p>
                                         <div>
                                             <div>
-                                                <button onClick={(event) =>{
-                                                    event.preventDefault()
+                                                <button onClick={() =>{
                                                     RemoveCoffe(item.id, item)
                                                 }}>
                                                     <Minus weight="bold" size={14}/>
                                                 </button>
                                                 <p>{item.amount}</p>
-                                                <button onClick={(event) =>{
-                                                    event.preventDefault()
+                                                <button onClick={() =>{
                                                     AddCoffe(item.id, item)
                                                 }}>
                                                     <Plus weight="bold" size={14}/>
