@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts";
 
 export function Header(){
-    const {carCoffe, SomerItemsCar} = useContext(CartContext)
+    const {somerCar} = useContext(CartContext)
     return(
         <ContainerHeader>
             <img src={Logo} alt="Logo do site" />
@@ -17,7 +17,7 @@ export function Header(){
                     Porto Alegre, RS
                 </button>
 
-                {carCoffe.length === 0 ?                 
+                {somerCar === 0 ?                 
                     <NavLink to="/">
                         <ShoppingCart weight="fill" size={22}/>
                     </NavLink>
@@ -26,7 +26,7 @@ export function Header(){
                         <NavLink to="/">
                             <ShoppingCart weight="fill" size={22}/>
                         </NavLink>
-                        <span>{SomerItemsCar}</span>
+                        <span>{somerCar}</span>
                     </IconCarItems>
                 }
             </nav>

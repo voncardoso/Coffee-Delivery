@@ -10,7 +10,7 @@ import { CartContext } from "../../contexts"
 
 
 export function Home(){
-    const {AddCoffe, RemoveCoffe, carCoffe} = useContext(CartContext)
+    const {AddCoffe, RemoveCoffe, addCarsCoffe, dataCoffeeCar} = useContext(CartContext)
     
     return(
         <ContainerHome>
@@ -56,12 +56,12 @@ export function Home(){
                 <Ourcafe>
                     <h2>Nossos cafés</h2>
                     <ul>
-                        {Data.map((item) =>{
+                        {dataCoffeeCar.map((item: any) =>{
                             return(
                                 <li key={item.id}>
                                     <img src={item.img} alt="" />
                                     <MethodOfPreparationCoffe>
-                                        {item.modo.map((modo) =>{
+                                        {item.modo.map((modo: any) =>{
                                             return(
                                                 <p key={modo.id}>{modo.type}</p>
                                             )
@@ -87,9 +87,12 @@ export function Home(){
                                                     <Plus weight="bold" size={14}/>
                                                 </button>
                                             </div>
-                                            <Link to="/">
+                                            <button onClick={() =>{
+                                                item.amount = 0
+                                                addCarsCoffe()
+                                            }}>
                                                 <ShoppingCart weight="fill" size={22}/>
-                                            </Link>
+                                            </button>
                                         </div>
                                     </MoneyCoffe>
                                 </li>  
