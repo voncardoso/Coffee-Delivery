@@ -21,14 +21,20 @@ interface CarContextTypes{
     carCoffe: propsCoffe[],
     AddCoffe: (id: number,  coffeItem: propsCoffe) => void
     RemoveCoffe: (id: number,  coffeItem: propsCoffe) => void
-    SomerItemsCar: number
+ ///   SomerItemsCar: number
+    addCarsCoffe: () => void
+    dataCoffeeCar: propsCoffe[],
+    somerCar: number
 }
 
 export const CartContext = createContext({} as CarContextTypes)
 
 export function CartContextProvaider({children}: CartContextProvaiderProps){
+    const [dataCoffeeCar, setDataCoffeCar] = useState<propsCoffe[]>([])
+    const [somerCar, setSomerCar] = useState(0);
+
     const [carCoffe, setCarsCoffe] = useState<propsCoffe[]>(() =>{
-        const storedCart = localStorage.getItem("teste")
+        const storedCart = localStorage.getItem("@ingniteCoffeCars:state-1.0.0")
         if(storedCart){
             return JSON.parse(storedCart)
         }
@@ -36,16 +42,22 @@ export function CartContextProvaider({children}: CartContextProvaiderProps){
     })
 
     useEffect(() =>{
-        localStorage.setItem("teste", JSON.stringify(carCoffe))
-    }, [carCoffe])
+        setDataCoffeCar(Data)
+    }, [])
 
-    const SomerItemsCar = carCoffe.reduce((prevItem: any, item:propsCoffe) => prevItem + Number(item.amount), 0)
+
+    useEffect(() =>{
+        const SomerItemsCar = carCoffe.reduce((prevItem: any, item:propsCoffe) => prevItem + Number(item.amount), 0)
+        setSomerCar(SomerItemsCar)
+    }, [])
+
+  //  const SomerItemsCar = carCoffe.reduce((prevItem: any, item:propsCoffe) => prevItem + Number(item.amount), 0)
 
 
     function AddCoffe(id: number, coffeItem: propsCoffe){
         const copyCoffee = [...carCoffe];
 
-        const item = Data.find((coffe) => coffe.id === id);
+        const item = dataCoffeeCar.find((coffe) => coffe.id === id);
 
         const item2 = copyCoffee.find((teste) => teste.id === id)
         if(item){
@@ -72,9 +84,10 @@ export function CartContextProvaider({children}: CartContextProvaiderProps){
     function RemoveCoffe(id: number, coffeItem: propsCoffe){
         const copyCoffee = [...carCoffe];
 
-        const item = Data.find((coffe) => coffe.id === id);
+        const item = dataCoffeeCar.find((coffe) => coffe.id === id);
 
         const item2 = copyCoffee.find((teste) => teste.id === id)
+
         if(item){
             item.amount--
         }
@@ -97,10 +110,26 @@ export function CartContextProvaider({children}: CartContextProvaiderProps){
         
     }
 
+    function addCarsCoffe(){
+        console.log("teste")
+        const SomerItemsCar = carCoffe.reduce((prevItem: any, item:propsCoffe) => prevItem + Number(item.amount), 0)
+
+        setSomerCar(SomerItemsCar)
+        localStorage.setItem("@ingniteCoffeCars:state-1.0.0", JSON.stringify(carCoffe))
+    }
 
 
     return(
-        <CartContext.Provider value={{AddCoffe, RemoveCoffe, carCoffe, SomerItemsCar}}>
+        <CartContext.Provider 
+            value={{
+                AddCoffe, 
+                RemoveCoffe, 
+                carCoffe, 
+               // SomerItemsCar,  
+                addCarsCoffe,
+                dataCoffeeCar,
+                somerCar
+            }}>
             {children}
         </CartContext.Provider>
     )
