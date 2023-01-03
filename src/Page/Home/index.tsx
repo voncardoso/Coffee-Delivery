@@ -1,10 +1,7 @@
 import { Coffee, Minus, Package, Plus, ShoppingCart, Timer } from "phosphor-react"
 import ImgCopoCafe from "../../assets/ImgCopoCafe.png"
-import ImgCoffe from "../../assets/Coffee.png"
 import { ContainerHome, DetailedInformation, DetailedInformationLi, HomeInfo, ImgPrincipalHome, MethodOfPreparationCoffe, MoneyCoffe, Ourcafe, TypeCoffe } from "./style"
-import { Link } from "react-router-dom"
-import {Data} from "../../data/index"
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { CartContext } from "../../contexts"
 
 

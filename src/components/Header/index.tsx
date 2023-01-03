@@ -18,12 +18,12 @@ export function Header(){
                 </button>
 
                 {somerCar === 0 ?                 
-                    <NavLink to="/">
+                    <NavLink to="/confirmarpedido">
                         <ShoppingCart weight="fill" size={22}/>
                     </NavLink>
                 :
                     <IconCarItems>
-                        <NavLink to="/">
+                        <NavLink to="/confirmarpedido">
                             <ShoppingCart weight="fill" size={22}/>
                         </NavLink>
                         <span>{somerCar}</span>
