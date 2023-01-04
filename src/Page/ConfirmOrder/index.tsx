@@ -1,5 +1,6 @@
 import {MapPinLine, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, ShoppingCart, Trash} from "phosphor-react"
 import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../contexts";
 import { 
     ContainerConfirmOrder, 
@@ -16,6 +17,7 @@ import {
 export function ConfirmOrder(){
     const {carCoffe, handleRemoverItem, AddCoffe, RemoveCoffe} = useContext(CartContext);
     const [deliveryValue, setDeliveryValue] = useState(5)
+    const navigate = useNavigate()
     const [buttonCredito, setBbuttonCredito] = useState("");
     const [buttonDebito, setBbuttonDebito] = useState("");
     const [buttonDinheiro, setBbuttonDinheiro] = useState("");
@@ -198,7 +200,9 @@ export function ConfirmOrder(){
                     <strong id="total">{ValueTotalCars()}</strong>
                 </ListCoffeeSelectedValue>
 
-                <ButtonConfirm>Confirma pedido</ButtonConfirm>
+                <ButtonConfirm onClick={() =>{
+                    navigate("/produtovendido")
+                }}>Confirma pedido</ButtonConfirm>
             </div>
            </CoffeeSelected>
         </ContainerConfirmOrder>

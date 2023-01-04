@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/Logo.svg"
 import { ShoppingCart, MapPin } from "phosphor-react";
 import { ContainerHeader, IconCarItems } from "./style";
@@ -7,9 +7,12 @@ import { CartContext } from "../../contexts";
 
 export function Header(){
     const {somerCar} = useContext(CartContext)
+    const navigate = useNavigate()
     return(
         <ContainerHeader>
-            <img src={Logo} alt="Logo do site" />
+            <img onClick={() =>{
+                navigate("/")
+            }} src={Logo} alt="Logo do site" />
 
             <nav>
                 <button>
