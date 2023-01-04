@@ -1,8 +1,19 @@
-import {MapPinLine, CurrencyDollar, CreditCard, Money, Bank} from "phosphor-react"
-import { ContainerConfirmOrder, FormPayment, Payment, TypePayment } from "./style";
+import {MapPinLine, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, ShoppingCart, Trash} from "phosphor-react"
+import { useContext } from "react";
+import { CartContext } from "../../contexts";
+import { 
+    ContainerConfirmOrder, 
+    FormPayment, 
+    Payment, 
+    TypePayment, 
+    CoffeeSelected,
+    ListCoffeeSelected
+} from "./style";
+
 
 export function ConfirmOrder(){
-
+    const {carCoffe} = useContext(CartContext);
+    console.log(carCoffe)
     return(
         <ContainerConfirmOrder>
            <Payment>
@@ -88,9 +99,48 @@ export function ConfirmOrder(){
                 </TypePayment>
            </Payment>
 
-           <div>
-            <h1>tasydgashjkghjk</h1>
-           </div>
+           <CoffeeSelected>
+            <h3>Cafés selecionados</h3>
+            <div>
+                <ListCoffeeSelected>
+                   {carCoffe.map((item) =>{
+                    return(
+                        <li key={item.id}>
+                            <img src={item.img} alt="" />
+                            <div>
+                                <header>
+                                    <p>{item.type}</p>
+                                    <strong>{item.money}</strong>
+                                </header>
+                                <div>
+                                    <div>
+                                        <button onClick={() =>{
+                                          //  RemoveCoffe(item.id, item)
+                                        }}>
+                                            <Minus weight="bold" size={14}/>
+                                        </button>
+                                        <p>{item.amount}</p>
+                                        <button onClick={() =>{
+                                           // AddCoffe(item.id, item)
+                                        }}>
+                                            <Plus weight="bold" size={14}/>
+                                        </button>
+                                    </div>
+                                    <button id="remover" onClick={() =>{
+                                        //item.amount = 0
+                                       // addCarsCoffe()
+                                    }}>
+                                        <Trash size={16}/>
+                                        <p>Remover</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                    )
+                   })}
+                </ListCoffeeSelected>
+            </div>
+           </CoffeeSelected>
         </ContainerConfirmOrder>
     )
 }
