@@ -15,13 +15,27 @@ import {
 
 export function ConfirmOrder(){
     const {carCoffe, handleRemoverItem, AddCoffe, RemoveCoffe} = useContext(CartContext);
-
+    const [deliveryValue, setDeliveryValue] = useState(5)
     const [buttonCredito, setBbuttonCredito] = useState("");
     const [buttonDebito, setBbuttonDebito] = useState("");
     const [buttonDinheiro, setBbuttonDinheiro] = useState("");
 
-    function ValueTotalItem(value: number, amount: number){
+    function ValueItem(value: number, amount: number){
         const total = value * amount;
+
+        return total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+    }
+
+    function ValueTotalCars(){
+        const valueItens = carCoffe.reduce((prevItem, item) => prevItem + (Number(item.amount) * Number(item.money)), 0)
+
+        const total = valueItens + deliveryValue
+
+        return total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+    }
+
+    function ValueTotalItens(){
+        const total = carCoffe.reduce((prevItem, item) => prevItem + (Number(item.amount) * Number(item.money)), 0)
 
         return total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
     }
@@ -144,7 +158,7 @@ export function ConfirmOrder(){
                             <div>
                                 <header>
                                     <p>{item.type}</p>
-                                    <strong>{ValueTotalItem(item.money, item.amount)}</strong>
+                                    <strong>{ValueItem(item.money, item.amount)}</strong>
                                 </header>
                                 <div>
                                     <div>
@@ -175,13 +189,13 @@ export function ConfirmOrder(){
 
                 <ListCoffeeSelectedValue>
                     <p>Total de intens</p>
-                    <p id="value">R$ 29,70</p>
+                    <p id="value">{ValueTotalItens()}</p>
 
                     <p>Entrega</p>
-                    <p id="value">R$ 3,50</p>
+                    <p id="value">{deliveryValue.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
 
                     <strong>Total</strong>
-                    <strong id="total">R$ 33,20</strong>
+                    <strong id="total">{ValueTotalCars()}</strong>
                 </ListCoffeeSelectedValue>
 
                 <ButtonConfirm>Confirma pedido</ButtonConfirm>
