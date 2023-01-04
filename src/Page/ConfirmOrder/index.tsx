@@ -1,5 +1,5 @@
 import {MapPinLine, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, ShoppingCart, Trash} from "phosphor-react"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../contexts";
 import { 
     ContainerConfirmOrder, 
@@ -8,13 +8,18 @@ import {
     TypePayment, 
     CoffeeSelected,
     ListCoffeeSelected,
-    ListCoffeeSelectedValue
+    ListCoffeeSelectedValue,
+    ButtonConfirm
 } from "./style";
 
 
 export function ConfirmOrder(){
     const {carCoffe} = useContext(CartContext);
-    console.log(carCoffe)
+    const [buttonCredito, setBbuttonCredito] = useState("");
+    const [buttonDebito, setBbuttonDebito] = useState("");
+    const [buttonDinheiro, setBbuttonDinheiro] = useState("");
+
+    
     return(
         <ContainerConfirmOrder>
            <Payment>
@@ -84,15 +89,36 @@ export function ConfirmOrder(){
                     </div>
 
                     <div id="payment">
-                        <button>
+                        <button
+                            className={buttonCredito} 
+                            onClick={() =>{
+                                setBbuttonCredito("active")
+                                setBbuttonDebito("")
+                                setBbuttonDinheiro("")
+                            }}
+                        >
                             <CreditCard size={16} />
                             <p>Cartão de crédito</p>
                         </button>
-                        <button>
+                        <button
+                            className={buttonDebito} 
+                            onClick={() =>{
+                                setBbuttonCredito("")
+                                setBbuttonDebito("active")
+                                setBbuttonDinheiro("")
+                            }}
+                        >
                             <Bank size={16} />
                             <p>Cartão de débito</p>
                         </button>
-                        <button>
+                        <button 
+                            className={buttonDinheiro} 
+                            onClick={() =>{
+                                setBbuttonCredito("")
+                                setBbuttonDebito("")
+                                setBbuttonDinheiro("active")
+                            }}
+                        >
                             <Money size={16} />
                             <p>dinheiro</p>
                         </button>
@@ -140,16 +166,19 @@ export function ConfirmOrder(){
                     )
                    })}
                 </ListCoffeeSelected>
+
                 <ListCoffeeSelectedValue>
                     <p>Total de intens</p>
-                    <p>R$ 29,70</p>
+                    <p id="value">R$ 29,70</p>
 
                     <p>Entrega</p>
-                    <p>R$3,50</p>
+                    <p id="value">R$ 3,50</p>
 
                     <strong>Total</strong>
-                    <strong>33,20</strong>
+                    <strong id="total">R$ 33,20</strong>
                 </ListCoffeeSelectedValue>
+
+                <ButtonConfirm>Confirma pedido</ButtonConfirm>
             </div>
            </CoffeeSelected>
         </ContainerConfirmOrder>

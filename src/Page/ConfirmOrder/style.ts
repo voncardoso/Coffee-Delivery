@@ -165,6 +165,11 @@ export const TypePayment = styled.div`
             background: ${(props) => props.theme["base-hover"]};  
             cursor: pointer;
         }
+
+        .active{
+            background: ${(props) => props.theme["purple-light"]};
+            border: 1px solid ${(props) => props.theme["purple"]}
+        }
     }
 `;
 
@@ -182,7 +187,7 @@ export const CoffeeSelected = styled.div`
 
 
 export const ListCoffeeSelected = styled.ul`
-    padding: 40px;
+    padding: 40px 40px 0px 40px;
     li{
         display: flex;
         align-items: flex-start;
@@ -229,6 +234,7 @@ export const ListCoffeeSelected = styled.ul`
                     >button{
                         border: none;
                         background: none;
+                        cursor: pointer;
                     }
                 }
                 
@@ -243,6 +249,11 @@ export const ListCoffeeSelected = styled.ul`
                     justify-content: center;
                     gap: 4px;
                     text-transform: uppercase;
+                    cursor: pointer;
+                }
+
+                #remover:hover{
+                    background: ${(props) => props.theme["base-hover"]};
                 }
             }
         }
@@ -256,5 +267,50 @@ export const ListCoffeeSelected = styled.ul`
 
 
 export const ListCoffeeSelectedValue = styled.div`
-    padding: 40px;
+    width: 100%;
+    padding: 24px 40px 24px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    border-top:  1px solid  ${(props) => props.theme["base-button"]};
+
+    p{
+        margin-bottom: 0.75rem;
+        line-height: 130%;
+        font-size: 0.875rem;
+    }
+
+    #value{
+        text-align: right;
+        font-size: 1rem;
+    }
+
+    strong{
+        font-size: 1.5rem;
+    }
+
+    #total{
+        text-align: right;
+    }
+    
 `;
+
+export const ButtonConfirm = styled.button`
+    max-width: 368px;
+    width: 100%;
+    margin: 0px 40px 40px 40px;
+    font-size: 0.875rem;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background: ${(props) => props.theme["yellow"]};
+    color: ${(props) => props.theme["white"]};
+    line-height: 130%;
+    cursor: pointer;
+
+    &:hover {
+        background: ${(props) => props.theme["yellow-dark"]};
+    }
+`;
+
+  
