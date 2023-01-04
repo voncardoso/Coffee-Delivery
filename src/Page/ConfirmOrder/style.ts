@@ -8,10 +8,7 @@ export const ContainerConfirmOrder = styled.section`
     display: grid;
     grid-template-columns: minmax(200px, 640px) 1fr;
     gap: 32px;
-`;
 
-export const Payment = styled.div`
-    width: 100%;
     h3{
         font-family: 'Baloo 2';
         font-style: normal;
@@ -21,6 +18,11 @@ export const Payment = styled.div`
         color:  ${(props) => props.theme["base-subtitle"]};
         margin-bottom: 0.93rem;
     }
+`;
+
+export const Payment = styled.div`
+    width: 100%;
+   
 `;
 
 export const FormPayment = styled.form`
@@ -163,5 +165,91 @@ export const TypePayment = styled.div`
             background: ${(props) => props.theme["base-hover"]};  
             cursor: pointer;
         }
+    }
+`;
+
+export const CoffeeSelected = styled.div`
+    max-width: 28rem;
+    width: 100%;
+    max-height: 31.125rem;
+
+    >div{
+        background: ${(props) => props.theme["base-card"]};
+        border-top-right-radius: 36px;
+        border-bottom-left-radius: 36px;
+    }
+`;
+
+
+export const ListCoffeeSelected = styled.ul`
+    padding: 40px;
+    li{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 20px;
+        margin-bottom: 1.5rem;
+        img{
+            max-width: 64px;
+            width: 100%;
+        }
+
+        div{
+            width: 100%;
+            padding-top: 3px;
+            header{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 0.5rem;
+                p{
+                    color: ${(props) => props.theme["base-subtitle"]};
+                    line-height: 130%;
+                }
+            }
+
+            >div{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 8px;
+
+                svg{
+                    display: flex;
+                    align-items: center;
+                    color: ${(props) => props.theme["purple"]};
+                }
+                >div{
+                    width: 72px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: ${(props) => props.theme["base-button"]};
+                    padding: 5px;
+                    border-radius: 6px;
+                    >button{
+                        border: none;
+                        background: none;
+                    }
+                }
+                
+                #remover{
+                    padding: 6px;
+                    border-radius: 6px;
+                    border: none;
+                    font-size: 12px;
+                    background: ${(props) => props.theme["base-button"]};
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 4px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+    li + li{
+        padding-top: 1.5rem;
+        border-top: 1px solid  ${(props) => props.theme["base-button"]};
     }
 `;
