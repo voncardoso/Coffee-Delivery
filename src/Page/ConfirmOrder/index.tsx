@@ -194,10 +194,10 @@ export function ConfirmOrder(){
                     <p id="value">{ValueTotalItens()}</p>
 
                     <p>Entrega</p>
-                    <p id="value">{deliveryValue.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
+                    <p id="value">{carCoffe.length === 0 ? "0,00" : deliveryValue.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</p>
 
                     <strong>Total</strong>
-                    <strong id="total">{ValueTotalCars()}</strong>
+                    <strong id="total">{carCoffe.length === 0 ? "0,00" : ValueTotalCars()}</strong>
                 </ListCoffeeSelectedValue>
 
                 <ButtonConfirm onClick={() =>{
