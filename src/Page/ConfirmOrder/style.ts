@@ -188,6 +188,14 @@ export const CoffeeSelected = styled.div`
 
 export const ListCoffeeSelected = styled.ul`
     padding: 40px 40px 0px 40px;
+    max-height: 300px;
+    overflow-y: auto;
+    // faz a barra desaparecer no mozila
+    scrollbar-width: none;
+    // faz a barra desaparecer no chrome
+    ::-webkit-scrollbar {
+        display: none;
+    }
     li{
         display: flex;
         align-items: flex-start;

@@ -234,6 +234,7 @@ export const MoneyCoffe = styled.div`
             align-items: center;
             border: none;
             background: none;
+            padding: 0px;
             cursor: pointer;
             svg{
                 color:${(props) => props.theme["purple"]} ;

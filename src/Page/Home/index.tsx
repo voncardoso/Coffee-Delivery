@@ -69,7 +69,7 @@ export function Home(){
                                         <p>{item.description}</p>
                                     </TypeCoffe>
                                     <MoneyCoffe>
-                                        <p>R$ <span>{item.money}</span></p>
+                                        <p>R$ <span>{item.money.toLocaleString('pt-br',{minimumFractionDigits: 2})}</span></p>
                                         <div>
                                             <div>
                                                 <button onClick={() =>{
@@ -88,7 +88,7 @@ export function Home(){
                                                 item.amount = 0
                                                 addCarsCoffe()
                                             }}>
-                                                <ShoppingCart weight="fill" size={22}/>
+                                                <ShoppingCart weight="fill" size={20}/>
                                             </button>
                                         </div>
                                     </MoneyCoffe>

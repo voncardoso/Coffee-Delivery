@@ -14,7 +14,7 @@ import {
 
 
 export function ConfirmOrder(){
-    const {carCoffe} = useContext(CartContext);
+    const {carCoffe, handleRemoverItem} = useContext(CartContext);
     const [buttonCredito, setBbuttonCredito] = useState("");
     const [buttonDebito, setBbuttonDebito] = useState("");
     const [buttonDinheiro, setBbuttonDinheiro] = useState("");
@@ -154,8 +154,7 @@ export function ConfirmOrder(){
                                         </button>
                                     </div>
                                     <button id="remover" onClick={() =>{
-                                        //item.amount = 0
-                                       // addCarsCoffe()
+                                       handleRemoverItem(item.id)
                                     }}>
                                         <Trash size={16}/>
                                         <p>Remover</p>

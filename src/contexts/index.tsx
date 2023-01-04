@@ -21,9 +21,10 @@ interface CarContextTypes{
     carCoffe: propsCoffe[],
     AddCoffe: (id: number,  coffeItem: propsCoffe) => void
     RemoveCoffe: (id: number,  coffeItem: propsCoffe) => void
-    addCarsCoffe: () => void
+    addCarsCoffe: () => void,
     dataCoffeeCar: propsCoffe[],
-    somerCar: number
+    somerCar: number,
+    handleRemoverItem: (id: number) => void
 }
 
 export const CartContext = createContext({} as CarContextTypes)
@@ -115,6 +116,17 @@ export function CartContextProvaider({children}: CartContextProvaiderProps){
         localStorage.setItem("@ingniteCoffeCars:state-1.0.0", JSON.stringify(carCoffe))
     }
 
+    function handleRemoverItem(id: number){
+        const array = [...carCoffe]
+
+        const index = array.filter((item) => item.id !== id)
+        const SomerItemsCar = index.reduce((prevItem: any, item:propsCoffe) => prevItem + Number(item.amount), 0)
+
+        setCarsCoffe(index)
+        setSomerCar(SomerItemsCar)
+        window.localStorage.setItem("@ingniteCoffeCars:state-1.0.0",  JSON.stringify(index))
+    }
+
 
     return(
         <CartContext.Provider 
@@ -124,7 +136,8 @@ export function CartContextProvaider({children}: CartContextProvaiderProps){
                 carCoffe,   
                 addCarsCoffe,
                 dataCoffeeCar,
-                somerCar
+                somerCar,
+                handleRemoverItem
             }}>
             {children}
         </CartContext.Provider>
