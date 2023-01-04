@@ -14,7 +14,7 @@ import {
 
 
 export function ConfirmOrder(){
-    const {carCoffe, handleRemoverItem} = useContext(CartContext);
+    const {carCoffe, handleRemoverItem, AddCoffe, RemoveCoffe} = useContext(CartContext);
     const [buttonCredito, setBbuttonCredito] = useState("");
     const [buttonDebito, setBbuttonDebito] = useState("");
     const [buttonDinheiro, setBbuttonDinheiro] = useState("");
@@ -137,18 +137,18 @@ export function ConfirmOrder(){
                             <div>
                                 <header>
                                     <p>{item.type}</p>
-                                    <strong>{item.money}</strong>
+                                    <strong>{item.money.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</strong>
                                 </header>
                                 <div>
                                     <div>
                                         <button onClick={() =>{
-                                          //  RemoveCoffe(item.id, item)
+                                           RemoveCoffe(item.id, item)
                                         }}>
                                             <Minus weight="bold" size={14}/>
                                         </button>
                                         <p>{item.amount}</p>
                                         <button onClick={() =>{
-                                           // AddCoffe(item.id, item)
+                                           AddCoffe(item.id, item)
                                         }}>
                                             <Plus weight="bold" size={14}/>
                                         </button>
