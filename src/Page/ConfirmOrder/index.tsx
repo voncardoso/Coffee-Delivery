@@ -15,9 +15,16 @@ import {
 
 export function ConfirmOrder(){
     const {carCoffe, handleRemoverItem, AddCoffe, RemoveCoffe} = useContext(CartContext);
+
     const [buttonCredito, setBbuttonCredito] = useState("");
     const [buttonDebito, setBbuttonDebito] = useState("");
     const [buttonDinheiro, setBbuttonDinheiro] = useState("");
+
+    function ValueTotalItem(value: number, amount: number){
+        const total = value * amount;
+
+        return total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+    }
 
     
     return(
@@ -137,7 +144,7 @@ export function ConfirmOrder(){
                             <div>
                                 <header>
                                     <p>{item.type}</p>
-                                    <strong>{item.money.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}</strong>
+                                    <strong>{ValueTotalItem(item.money, item.amount)}</strong>
                                 </header>
                                 <div>
                                     <div>
