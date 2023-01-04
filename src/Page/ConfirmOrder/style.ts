@@ -253,3 +253,8 @@ export const ListCoffeeSelected = styled.ul`
         border-top: 1px solid  ${(props) => props.theme["base-button"]};
     }
 `;
+
+
+export const ListCoffeeSelectedValue = styled.div`
+    padding: 40px;
+`;

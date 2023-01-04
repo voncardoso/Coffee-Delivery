@@ -7,7 +7,8 @@ import {
     Payment, 
     TypePayment, 
     CoffeeSelected,
-    ListCoffeeSelected
+    ListCoffeeSelected,
+    ListCoffeeSelectedValue
 } from "./style";
 
 
@@ -139,6 +140,16 @@ export function ConfirmOrder(){
                     )
                    })}
                 </ListCoffeeSelected>
+                <ListCoffeeSelectedValue>
+                    <p>Total de intens</p>
+                    <p>R$ 29,70</p>
+
+                    <p>Entrega</p>
+                    <p>R$3,50</p>
+
+                    <strong>Total</strong>
+                    <strong>33,20</strong>
+                </ListCoffeeSelectedValue>
             </div>
            </CoffeeSelected>
         </ContainerConfirmOrder>
