@@ -1,3 +1,4 @@
+import {useForm} from "react-hook-form"
 import {MapPinLine, CurrencyDollar, CreditCard, Money, Bank, Minus, Plus, ShoppingCart, Trash} from "phosphor-react"
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,14 +14,28 @@ import {
     ButtonConfirm
 } from "./style";
 
+interface IFormInput {
+    cep: String;
+    rua: string;
+    complemento: string;
+    bairro: string
+    cidade: string
+    uf: string;
+    numero: number;
+  }
+
 
 export function ConfirmOrder(){
-    const {carCoffe, handleRemoverItem, AddCoffe, RemoveCoffe} = useContext(CartContext);
-    const [deliveryValue, setDeliveryValue] = useState(5)
+    const {register, handleSubmit, watch, formState:{errors}} = useForm<IFormInput>()
     const navigate = useNavigate()
+    const {carCoffe, handleRemoverItem, AddCoffe, RemoveCoffe, addPayment} = useContext(CartContext);
+
+    const [deliveryValue, setDeliveryValue] = useState(5)
+    const[typePay, setTypePay] = useState("")
     const [buttonCredito, setBbuttonCredito] = useState("");
     const [buttonDebito, setBbuttonDebito] = useState("");
     const [buttonDinheiro, setBbuttonDinheiro] = useState("");
+
 
     function ValueItem(value: number, amount: number){
         const total = value * amount;
@@ -42,12 +57,28 @@ export function ConfirmOrder(){
         return total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
     }
 
-    
+    function handleFinishedOrder(data: IFormInput){
+        const dataAdress = {
+             cidade:data.cidade ,
+             cep:data.cep,
+             bairro:data.bairro,
+             uf:data.uf,
+             rua:data.rua,
+             complemento:data.complemento ,
+             numero:data.numero,
+             payment: typePay,
+        }
+        
+        addPayment(dataAdress)
+        
+        navigate("/produtovendido")
+    }
+
     return(
-        <ContainerConfirmOrder>
+        <ContainerConfirmOrder onSubmit={handleSubmit(handleFinishedOrder)}>
            <Payment>
                 <h3>Complete seu pedido</h3>
-                <FormPayment action="">
+                <FormPayment>
                     <div>
                         <MapPinLine size={22} />
                         <div>
@@ -60,45 +91,45 @@ export function ConfirmOrder(){
                     </div>
                     <input
                         id="cep"
-                        name="cep" 
                         type="text" 
                         placeholder="CEP"
+                        {...register("cep",{ required: true})}
                     />
                     <input
                         id="rua"
-                        name="rua" 
                         type="text" 
                         placeholder="Rua"
+                        {...register("rua",{ required: true })}
                     />
                     <input
                         id="numero"
-                        name="numero" 
                         type="text" 
                         placeholder="Número"
+                        {...register("numero",{ required: true })}
                     />
                     <input
                         id="complemento"
-                        name="complemento" 
                         type="text" 
                         placeholder="Complemento"
+                        {...register("complemento")}
                     />
                     <input
                         id="bairro"
-                        name="bairro" 
                         type="text" 
                         placeholder="Bairro"
+                        {...register("bairro",{ required: true })}
                     />
                     <input
-                        id="cidade"
-                        name="cidade" 
+                        id="cidade"                    
                         type="text" 
                         placeholder="Cidade"
+                        {...register("cidade", { required: true })}
                     />
                     <input
                         id="uf"
-                        name="uf" 
                         type="text" 
                         placeholder="UF"
+                        {...register("uf", { required: true })}
                     />
                 </FormPayment>
 
@@ -114,10 +145,12 @@ export function ConfirmOrder(){
                     <div id="payment">
                         <button
                             className={buttonCredito} 
+                            type="button"
                             onClick={() =>{
                                 setBbuttonCredito("active")
                                 setBbuttonDebito("")
                                 setBbuttonDinheiro("")
+                                setTypePay("cartão")
                             }}
                         >
                             <CreditCard size={16} />
@@ -125,10 +158,12 @@ export function ConfirmOrder(){
                         </button>
                         <button
                             className={buttonDebito} 
+                            type="button"
                             onClick={() =>{
                                 setBbuttonCredito("")
                                 setBbuttonDebito("active")
                                 setBbuttonDinheiro("")
+                                setTypePay("debito")
                             }}
                         >
                             <Bank size={16} />
@@ -136,10 +171,12 @@ export function ConfirmOrder(){
                         </button>
                         <button 
                             className={buttonDinheiro} 
+                            type="button"
                             onClick={() =>{
                                 setBbuttonCredito("")
                                 setBbuttonDebito("")
                                 setBbuttonDinheiro("active")
+                                setTypePay("dinheiro")
                             }}
                         >
                             <Money size={16} />
@@ -200,9 +237,11 @@ export function ConfirmOrder(){
                     <strong id="total">{carCoffe.length === 0 ? "0,00" : ValueTotalCars()}</strong>
                 </ListCoffeeSelectedValue>
 
-                <ButtonConfirm onClick={() =>{
-                    navigate("/produtovendido")
-                }}>Confirma pedido</ButtonConfirm>
+                <ButtonConfirm 
+                    type="submit"
+                    onClick={() =>{
+                      //  handleFinishedOrder()
+                    }}>Confirma pedido</ButtonConfirm>
             </div>
            </CoffeeSelected>
         </ContainerConfirmOrder>

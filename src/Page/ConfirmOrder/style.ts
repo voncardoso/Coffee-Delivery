@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerConfirmOrder = styled.section`
+export const ContainerConfirmOrder = styled.form`
     position: relative;
     top: 144px;
     max-width: 72.5rem;

@@ -17,22 +17,36 @@ interface propsCoffe{
     
 }
 
+interface IFormInput {
+    cep: String;
+    rua: string;
+    complemento: string;
+    bairro: string
+    cidade: string
+    uf: string;
+    numero: number;
+}
+
 interface CarContextTypes{
     carCoffe: propsCoffe[],
-    AddCoffe: (id: number,  coffeItem: propsCoffe) => void
-    RemoveCoffe: (id: number,  coffeItem: propsCoffe) => void
+    AddCoffe: (id: number,  coffeItem: propsCoffe) => void,
+    RemoveCoffe: (id: number,  coffeItem: propsCoffe) => void,
     addCarsCoffe: () => void,
     dataCoffeeCar: propsCoffe[],
     somerCar: number,
-    handleRemoverItem: (id: number) => void
+    handleRemoverItem: (id: number) => void,
+    dataPayment:  {},
+    addPayment: (data: IFormInput) => void
 }
+
+
 
 export const CartContext = createContext({} as CarContextTypes)
 
 export function CartContextProvaider({children}: CartContextProvaiderProps){
     const [dataCoffeeCar, setDataCoffeCar] = useState<propsCoffe[]>([])
     const [somerCar, setSomerCar] = useState(0);
-
+    const [dataPayment, setDataPayment] = useState<{}>({})
     const [carCoffe, setCarsCoffe] = useState<propsCoffe[]>(() =>{
         const storedCart = localStorage.getItem("@ingniteCoffeCars:state-1.0.0")
         if(storedCart){
@@ -127,7 +141,11 @@ export function CartContextProvaider({children}: CartContextProvaiderProps){
         window.localStorage.setItem("@ingniteCoffeCars:state-1.0.0",  JSON.stringify(index))
     }
 
+    function addPayment(data: IFormInput){
+        setDataPayment(data)
+    }
 
+    console.log("pagamento", dataPayment)
     return(
         <CartContext.Provider 
             value={{
@@ -137,7 +155,9 @@ export function CartContextProvaider({children}: CartContextProvaiderProps){
                 addCarsCoffe,
                 dataCoffeeCar,
                 somerCar,
-                handleRemoverItem
+                handleRemoverItem,
+                dataPayment,
+                addPayment
             }}>
             {children}
         </CartContext.Provider>
