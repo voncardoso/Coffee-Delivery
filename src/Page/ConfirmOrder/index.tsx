@@ -28,7 +28,7 @@ interface IFormInput {
 export function ConfirmOrder(){
     const {register, handleSubmit, watch, formState:{errors}} = useForm<IFormInput>()
     const navigate = useNavigate()
-    const {carCoffe, handleRemoverItem, AddCoffe, RemoveCoffe, addPayment} = useContext(CartContext);
+    const {carCoffe, handleRemoverItem, AddCoffe, RemoveCoffe, addPayment, clearCarCoffe} = useContext(CartContext);
 
     const [deliveryValue, setDeliveryValue] = useState(5)
     const[typePay, setTypePay] = useState("")
@@ -70,7 +70,7 @@ export function ConfirmOrder(){
         }
         
         addPayment(dataAdress)
-        
+        clearCarCoffe()
         navigate("/produtovendido")
     }
 
@@ -150,7 +150,7 @@ export function ConfirmOrder(){
                                 setBbuttonCredito("active")
                                 setBbuttonDebito("")
                                 setBbuttonDinheiro("")
-                                setTypePay("cartão")
+                                setTypePay("Cartão")
                             }}
                         >
                             <CreditCard size={16} />
@@ -163,7 +163,7 @@ export function ConfirmOrder(){
                                 setBbuttonCredito("")
                                 setBbuttonDebito("active")
                                 setBbuttonDinheiro("")
-                                setTypePay("debito")
+                                setTypePay("Debito")
                             }}
                         >
                             <Bank size={16} />
@@ -176,7 +176,7 @@ export function ConfirmOrder(){
                                 setBbuttonCredito("")
                                 setBbuttonDebito("")
                                 setBbuttonDinheiro("active")
-                                setTypePay("dinheiro")
+                                setTypePay("Dinheiro")
                             }}
                         >
                             <Money size={16} />

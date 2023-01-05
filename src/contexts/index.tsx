@@ -35,8 +35,9 @@ interface CarContextTypes{
     dataCoffeeCar: propsCoffe[],
     somerCar: number,
     handleRemoverItem: (id: number) => void,
-    dataPayment:  {},
+    dataPayment:  any,
     addPayment: (data: IFormInput) => void
+    clearCarCoffe: () => void
 }
 
 
@@ -145,6 +146,10 @@ export function CartContextProvaider({children}: CartContextProvaiderProps){
         setDataPayment(data)
     }
 
+    function clearCarCoffe(){
+        setCarsCoffe([])
+        setSomerCar(0)
+    }
     console.log("pagamento", dataPayment)
     return(
         <CartContext.Provider 
@@ -157,7 +162,8 @@ export function CartContextProvaider({children}: CartContextProvaiderProps){
                 somerCar,
                 handleRemoverItem,
                 dataPayment,
-                addPayment
+                addPayment,
+                clearCarCoffe
             }}>
             {children}
         </CartContext.Provider>

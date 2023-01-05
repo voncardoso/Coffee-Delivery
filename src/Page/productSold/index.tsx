@@ -1,8 +1,11 @@
 import { MapPin, Timer, CurrencyDollar } from "phosphor-react"
+import { useContext } from "react";
 import ImgEntrega from "../../assets/Illustration.png"
+import { CartContext } from "../../contexts";
 import { ContainerProductSold, LiProductSold } from "./style";
 
 export function ProductSold(){
+    const {dataPayment} = useContext(CartContext)
     return(
         <ContainerProductSold>
             <div>
@@ -15,8 +18,8 @@ export function ProductSold(){
                             <MapPin size={16}  weight="fill"/>
                         </span>
                         <div>
-                            <p>Entrega em <strong>Rua João Daniel Martinelli</strong>, 102</p>
-                            <p>Farrapos - Porto Alegre, RS</p>
+                            <p>Entrega em <strong>{dataPayment.rua}</strong>, {dataPayment.numero}</p>
+                            <p>{dataPayment.bairro} - {dataPayment.cidade}, {dataPayment.uf}</p>
                         </div>
                     </LiProductSold>
                     <LiProductSold statusColor="yellow">
@@ -35,8 +38,8 @@ export function ProductSold(){
                         </span>
                         
                         <div>
-                            <p>Entrega em Rua João Daniel Martinelli, 102</p>
-                            <strong>Cartão de Credito</strong>
+                            <p>Entrega em Rua {dataPayment.rua}, {dataPayment.numero}</p>
+                            <strong>{dataPayment.payment}</strong>
                         </div>
                     </LiProductSold>
                 </ul>
